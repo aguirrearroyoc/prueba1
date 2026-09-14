@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Eventos · AEBI</title>
+  <meta name="description" content="Programación de eventos de AEBI: BIOFEST, Feria de Semilleros, Día del Biólogo y más.">
+  <!-- Icono de la pestaña (usa el logo) -->
+  <link rel="icon" href="Imagenes/LOGOAEBI.png">
+
+  <!-- Tipografías del manual de marca (Bebas Neue y Oswald, desde Google Fonts).
+       Arial no necesita descargarse: ya está en todos los computadores. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Iconos (LinkedIn, Instagram, correo, WhatsApp, flechas) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Hoja de estilos de la página (colores, tamaños, etc.) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     ENCABEZADO Y MENÚ
+     Este bloque se repite igual en todas las páginas. Si agregas una
+     pestaña nueva, agrégala en TODAS las páginas para que el menú sea
+     igual en todas. La página actual lleva class="activo".
+     ===================================================================== -->
+<header class="encabezado">
+  <div class="contenedor">
+    <!-- Logo: el archivo está en Imagenes/LOGOAEBI.png -->
+    <a class="logo" href="index.html">
+      <img src="Imagenes/LOGOAEBI.png" alt="AEBI - Asociación Estudiantil de Biología de Icesi">
+    </a>
+
+    <!-- Botón de menú que solo se ve en celular -->
+    <button class="hamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav class="navegacion" aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="eventos.html" class="activo">Eventos</a></li>
+        <!-- Pestaña con submenú -->
+        <li class="desplegable">
+          <button type="button" aria-expanded="false">Proyectos</button>
+          <ul class="submenu">
+            <li><a href="grupos-de-estudio.html">Grupos de estudio</a></li>
+            <li><a href="semilleros.html">Semilleros</a></li>
+          </ul>
+        </li>
+        <li><a href="bio-colecciones.html">Bio-Colecciones</a></li>
+        <li><a href="miembros.html">Miembros</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
+        <li><a href="inscripciones.html" class="boton boton-menu">Únete a nosotros</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <h1>Eventos</h1>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROGRAMACIÓN DE EVENTOS
+     Cada evento es un bloque <article class="evento"> ... </article>.
+     - Para agregar un evento: copia uno completo y cambia imagen, fecha,
+       título, texto y el link de Google Calendar.
+     - Para quitar un evento: borra su bloque completo.
+     - El orden en la página es el mismo orden en que están aquí.
+     ===================================================================== -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="titulo-con-boton">
+      <h2>Programación de eventos</h2>
+    </div>
+
+    <div class="eventos">
+      <article class="evento" data-fecha="2026-10-29">
+        <!-- Imagen circular del evento -->
+        <div class="evento-imagen">
+          <img src="Imagenes/LOGOBIOFEST.png" alt="Logo de BIOFEST">
+        </div>
+        <p class="evento-fecha">29 de octubre de 2026 | 9:00 a. m. a 5:00 p. m.</p>
+        <h3>BIOFEST</h3>
+        <p>Feria de emprendimientos verdes en pro del apoyo al desarrollo económico sostenible de Cali y fondos para actividades del grupo. ¿Tienes un emprendimiento? ¡Conectemos!</p>
+        <!-- Enlace a Google Calendar. Para cambiar la fecha, edita "dates":
+             formato AAAAMMDDTHHMMSS/AAAAMMDDTHHMMSS (inicio/fin, hora local de Colombia).
+             Ejemplo: 20261029T090000 = 29 oct 2026, 9:00 am. También edita
+             data-fecha de arriba (formato AAAA-MM-DD) para que el evento
+             aparezca marcado en el calendario de abajo. -->
+        <a class="boton" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=BIOFEST 2026 - AEBI&dates=20261029T090000/20261029T170000&ctz=America/Bogota&details=Feria de emprendimientos verdes en pro del apoyo al desarrollo económico sostenible de Cali y fondos para actividades del grupo. ¿Tienes un emprendimiento? ¡Conectemos!&location=Universidad Icesi, Cali" target="_blank" rel="noopener">Agéndate</a>
+      </article>
+
+      <article class="evento" data-fecha="2026-10-28">
+        <!-- Imagen circular del evento -->
+        <div class="evento-imagen">
+          <img src="Imagenes/FERIASEMILLEROS.jpeg" alt="Feria de Semilleros">
+        </div>
+        <p class="evento-fecha">28 de octubre de 2026</p>
+        <h3>Feria de Semilleros</h3>
+        <p>Conoce los espacios para participación estudiantil que tenemos en la universidad.</p>
+        <!-- Enlace a Google Calendar. Para cambiar la fecha, edita "dates":
+             formato AAAAMMDDTHHMMSS/AAAAMMDDTHHMMSS (inicio/fin, hora local de Colombia).
+             Ejemplo: 20261029T090000 = 29 oct 2026, 9:00 am. También edita
+             data-fecha de arriba (formato AAAA-MM-DD) para que el evento
+             aparezca marcado en el calendario de abajo. -->
+        <a class="boton" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Feria de Semilleros - AEBI&dates=20261028/20261029&ctz=America/Bogota&details=Conoce los espacios para participación estudiantil que tenemos en la universidad.&location=Universidad Icesi, Cali" target="_blank" rel="noopener">Agéndate</a>
+      </article>
+
+      <article class="evento" data-fecha="2026-09-17">
+        <!-- Imagen circular del evento -->
+        <div class="evento-imagen">
+          <img src="Imagenes/BIOLOGO.jpeg" alt="Día del Biólogo">
+        </div>
+        <p class="evento-fecha">17 de septiembre de 2026 | 12:00 a 2:00 p. m.</p>
+        <h3>Día del Biólogo</h3>
+        <p>Se conmemora la promulgación de la <strong>Ley 22 de 1984</strong>, la cual reglamentó oficialmente el ejercicio de la profesión de biología en el país. Nos encanta comer pastel.</p>
+        <!-- Enlace a Google Calendar. Para cambiar la fecha, edita "dates":
+             formato AAAAMMDDTHHMMSS/AAAAMMDDTHHMMSS (inicio/fin, hora local de Colombia).
+             Ejemplo: 20261029T090000 = 29 oct 2026, 9:00 am. También edita
+             data-fecha de arriba (formato AAAA-MM-DD) para que el evento
+             aparezca marcado en el calendario de abajo. -->
+        <a class="boton" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Día del Biólogo - AEBI&dates=20260917T120000/20260917T140000&ctz=America/Bogota&details=Se conmemora la promulgación de la Ley 22 de 1984, la cual reglamentó oficialmente el ejercicio de la profesión de biología en el país. Nos encanta comer pastel.&location=Universidad Icesi, Cali" target="_blank" rel="noopener">Agéndate</a>
+      </article>
+    </div>
+
+    <!-- =================================================================
+         CALENDARIO
+         Se arma solo, leyendo el "data-fecha" de cada evento de arriba
+         (por eso no hay nada que editar acá): agrega o quita un evento
+         arriba y el calendario se actualiza. Lo arma js/principal.js.
+         ================================================================= -->
+    <h2>Calendario</h2>
+    <div id="calendario" class="calendario"></div>
+
+    <!-- Caja de invitación a proponer eventos.
+         Para cambiar la foto: cambia la ruta de la imagen de abajo. -->
+    <div class="caja-invitacion">
+      <div class="blob-marco blob-pequeno">
+        <div class="blob">
+          <img src="Imagenes/PRINCIPAL.jpg" alt="Actividades de AEBI">
+        </div>
+      </div>
+      <div>
+        <h2>¿Tienes la iniciativa de algún evento?</h2>
+        <p>En AEBI buscamos conectar con actividades acorde a nuestra visión. Nos encantaría escuchar de ti.</p>
+        <a class="boton boton-crema" href="mailto:aebicesi@gmail.com">Escríbenos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =====================================================================
+     PIE DE PÁGINA: ¡Contáctanos!
+     Se repite igual en todas las páginas. Para cambiar un link o el
+     correo, cámbialo aquí y en las demás páginas.
+     ===================================================================== -->
+<footer class="pie">
+  <div class="contenedor pie-contacto">
+    <h2>¡Contáctanos!</h2>
+    <ul class="redes">
+      <li>
+        <a href="https://www.linkedin.com/company/aebi-asociacion-estudiantil-de-biologia-de-icesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aebicesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram
+        </a>
+      </li>
+      <li>
+        <a href="mailto:aebicesi@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>aebicesi@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Franja de crédito (letra pequeña y cursiva) -->
+  <div class="pie-credito">
+    <div class="contenedor">
+      <p>Esta página es una iniciativa impulsada para conectar biólogos con los medios interactivos y tecnologías de comunicación. Designed by Catalina Aguirre, <a href="mailto:cataaguirrearroyo@gmail.com">feedback</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- El JavaScript va de último para que la página cargue primero -->
+<script src="js/principal.js"></script>
+</body>
+</html>

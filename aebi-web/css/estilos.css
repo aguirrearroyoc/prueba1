@@ -1,0 +1,1645 @@
+/* ==========================================================================
+   ESTILOS DE LA PÁGINA DE AEBI
+   ==========================================================================
+   Este archivo controla el aspecto de TODAS las páginas (colores, tipografías,
+   tamaños, espacios). Está dividido en bloques con títulos como este.
+
+   Si quieres cambiar algo de aspecto, busca el bloque correspondiente:
+     1. Paleta de colores y tipografías (variables)
+     2. Estilos base (cuerpo de texto, títulos, enlaces)
+     3. Botones
+     4. Encabezado y menú de navegación
+     5. Pie de página (¡Contáctanos!)
+     6. Portada (hero) y marco "blob" de las fotos
+     7. Sección "Nuestra visión y valores" + links rápidos
+     8. Cabecera de las páginas internas
+     9. Tarjetas de eventos
+    10. Grupos de estudio
+    11. Semilleros
+    12. Bio-Colecciones (carrusel de camisetas)
+    13. Miembros (organigrama, galerías, Red Alumni)
+    14. Inscripciones
+    15. Pop-up del próximo evento
+    16. Ajustes para celular (responsive)
+
+   TRUCO: en CSS, los comentarios van entre /* y * /  (sin el espacio).
+   Todo lo que está comentado no afecta la página.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. PALETA DE COLORES Y TIPOGRAFÍAS
+   --------------------------------------------------------------------------
+   Aquí están los colores del manual de marca guardados como "variables".
+   Cambiar un color aquí lo cambia en toda la página.
+   Para usar una variable en cualquier parte se escribe: var(--nombre)
+   ========================================================================== */
+:root {
+  /* Colores principales del manual de marca */
+  --verde:    #5ebd21;
+  --naranja:  #c66629;
+  --amarillo: #ecd13c;
+  --azul:     #3780d4;
+
+  /* Colores secundarios (tomados de la paleta "Secundarios" del manual) */
+  --verde-oscuro:  #1e2a12;   /* fondo de la portada, texto principal y pie de página */
+  --verde-bosque:  #3c4a31;
+  --oliva:         #5d6f0c;
+  --verde-claro:   #c1d865;
+
+  --naranja-oscuro: #ca5f31;
+  --naranja-suave:  #b0694b;
+  --dorado:         #e39119;
+  --naranja-claro:  #ffaf3c;
+
+  --mostaza:        #e1b808;
+  --amarillo-vivo:  #fed12e;
+  --amarillo-suave: #ecda50;
+  --amarillo-claro: #fef17e;
+
+  --azul-oscuro:  #01327e;
+  --azul-medio:   #014abd;
+  --azul-suave:   #6591d8;
+  --azul-claro:   #a2b9d8;
+
+  /* Neutros */
+  --crema:  #fdfaf5;   /* fondo general de la página (el mismo crema del manual) */
+  --blanco: #ffffff;
+  --tinta:  #1e2a12;   /* color del texto normal (verde muy oscuro, no negro puro) */
+
+  /* Tipografías del manual de marca.
+     - Títulos: Bebas Neue (versión Cyrillic no está en Google Fonts; se usa Bebas Neue)
+     - Subtítulos y texto medio: Oswald
+     - Cuerpo de texto: Roboto. A diferencia de Arial, Roboto NO viene instalada
+       en todos los computadores, así que hay que cargarla desde Google Fonts
+       (ya está agregada en el <link> de cada página, junto a Bebas Neue y Oswald) */
+  --fuente-titulo: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --fuente-sub:    'Oswald', 'Arial Narrow', sans-serif;
+  --fuente-texto:  'Roboto', Helvetica, Arial, sans-serif;
+
+  /* Ancho máximo del contenido en pantallas grandes */
+  --ancho-contenido: 1140px;
+}
+
+
+/* ==========================================================================
+   2. ESTILOS BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;         /* para que el pie de página quede siempre abajo */
+  font-family: var(--fuente-texto);
+  font-size: 1.0625rem;          /* 17px aprox. */
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--crema);
+}
+
+main {
+  flex: 1;
+}
+
+/* "Contenedor" centra el contenido y le da márgenes a los lados */
+.contenedor {
+  width: min(100% - 2.5rem, var(--ancho-contenido));
+  margin-inline: auto;
+}
+
+/* Todos los títulos grandes usan Bebas Neue */
+h1, h2 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: clamp(3rem, 7vw, 5.5rem); }
+h2 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
+
+/* Los títulos medianos (de tarjetas, etc.) usan Oswald */
+h3, h4 {
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.4em;
+}
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin: 0 0 1em;
+  max-width: 65ch;               /* líneas no muy largas para que se lean bien */
+}
+
+a {
+  color: var(--azul-medio);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Cuando una imagen NO se encuentra (nombre mal escrito, carpeta equivocada...)
+   se oculta y se ve el color de fondo de su caja, en vez del icono roto. */
+img.img-no-encontrada {
+  opacity: 0;
+}
+
+/* Contorno visible al navegar con teclado (accesibilidad) */
+:focus-visible {
+  outline: 3px solid var(--amarillo);
+  outline-offset: 3px;
+}
+
+/* Separación estándar entre secciones */
+.seccion {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+/* Texto secundario con Oswald (ej. subtítulos pequeños) */
+.texto-medio {
+  font-family: var(--fuente-sub);
+  font-weight: 500;
+}
+
+/* Texto centrado */
+.centrado {
+  text-align: center;
+}
+.centrado p {
+  margin-inline: auto;
+}
+
+
+/* ==========================================================================
+   3. BOTONES
+   --------------------------------------------------------------------------
+   Todos los botones llevan la clase "boton". Después se le puede sumar
+   un color: boton-verde, boton-naranja, boton-amarillo, boton-azul,
+   boton-oscuro, boton-crema, o boton-borde (solo contorno).
+   ========================================================================== */
+.boton {
+  display: inline-block;
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 1.6rem;
+  border: 0;
+  cursor: pointer;
+  background: var(--verde);
+  color: var(--verde-oscuro);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.boton:hover,
+.boton:focus-visible {
+  background: var(--verde-claro);
+}
+
+.boton-naranja { background: var(--naranja); color: var(--crema); }
+.boton-naranja:hover, .boton-naranja:focus-visible { background: var(--naranja-oscuro); }
+
+.boton-amarillo { background: var(--amarillo); color: var(--verde-oscuro); }
+.boton-amarillo:hover, .boton-amarillo:focus-visible { background: var(--amarillo-vivo); }
+
+.boton-azul { background: var(--azul); color: var(--crema); }
+.boton-azul:hover, .boton-azul:focus-visible { background: var(--azul-medio); }
+
+.boton-oscuro { background: var(--verde-oscuro); color: var(--crema); }
+.boton-oscuro:hover, .boton-oscuro:focus-visible { background: var(--verde-bosque); }
+
+.boton-crema { background: var(--crema); color: var(--verde-oscuro); }
+.boton-crema:hover, .boton-crema:focus-visible { background: var(--amarillo-claro); }
+
+.boton-borde {
+  background: transparent;
+  color: var(--crema);
+  border: 2px solid var(--crema);
+}
+.boton-borde:hover, .boton-borde:focus-visible {
+  background: var(--crema);
+  color: var(--verde-oscuro);
+}
+
+/* Icono dentro de un botón (ej. WhatsApp) */
+.boton i {
+  margin-right: 0.5rem;
+}
+
+
+/* ==========================================================================
+   4. ENCABEZADO Y MENÚ DE NAVEGACIÓN
+   ========================================================================== */
+.encabezado {
+  background: var(--crema);
+  border-bottom: 3px solid var(--verde-oscuro);
+  position: sticky;              /* el menú se queda pegado arriba al bajar */
+  top: 0;
+  z-index: 50;
+}
+
+.encabezado .contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 84px;
+}
+
+/* Logo: cambia los máximos aquí si el logo se ve muy grande o muy pequeño.
+   Se limita el ancho para que un logo horizontal no le quite espacio al menú. */
+.logo img {
+  max-height: 60px;
+  max-width: 200px;
+  width: auto;
+  height: auto;
+}
+
+/* Lista de links del menú */
+.menu {
+  display: flex;
+  flex-wrap: wrap;               /* si algún día no cabe, baja una pestaña completa (nunca una palabra) */
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.menu a {
+  display: block;
+  font-family: var(--fuente-sub);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--tinta);
+  text-decoration: none;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;           /* "Bio-Colecciones" nunca se parte en dos líneas */
+}
+.menu a:hover,
+.menu a:focus-visible {
+  border-bottom-color: var(--verde);
+}
+
+/* La página en la que estás se subraya en verde (clase "activo" en el HTML) */
+.menu a.activo {
+  border-bottom-color: var(--verde);
+}
+
+/* Menú desplegable de "Proyectos" */
+.desplegable > button {
+  font-family: var(--fuente-sub);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--tinta);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;           /* la flechita se queda al lado de "Proyectos" */
+}
+.desplegable > button::after {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin-left: 0.5em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-0.2em) rotate(45deg);
+}
+.desplegable > button:hover,
+.desplegable > button:focus-visible,
+.desplegable.abierto > button {
+  border-bottom-color: var(--verde);
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0;
+  background: var(--crema);
+  border: 3px solid var(--verde-oscuro);
+}
+.desplegable:hover .submenu,
+.desplegable:focus-within .submenu,
+.desplegable.abierto .submenu {
+  display: block;
+}
+.submenu a {
+  padding: 0.55rem 1.1rem;
+  border-bottom: 0;
+}
+.submenu a:hover,
+.submenu a:focus-visible,
+.submenu a.activo {
+  background: var(--verde-claro);
+}
+
+/* Botón "Únete a nosotros" del encabezado */
+.menu .boton-menu {
+  padding: 0.7rem 1.2rem;
+  margin-left: 0.6rem;
+  border-bottom: 0;
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Botón de hamburguesa (solo aparece en tablet y celular, ver bloque 17) */
+.hamburguesa {
+  display: none;
+  background: none;
+  border: 3px solid var(--verde-oscuro);
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+  color: var(--verde-oscuro);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+
+/* ==========================================================================
+   5. PIE DE PÁGINA (¡Contáctanos!)
+   ========================================================================== */
+.pie {
+  background: var(--verde-oscuro);
+  color: var(--crema);
+  margin-top: auto;
+}
+
+.pie-contacto {
+  padding-block: 3.5rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+.pie-contacto h2 {
+  margin: 0;
+  color: var(--amarillo);
+}
+
+.redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.redes a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--crema);
+  text-decoration: none;
+  font-family: var(--fuente-sub);
+  font-size: 1.05rem;
+}
+.redes a:hover,
+.redes a:focus-visible {
+  color: var(--verde-claro);
+}
+/* Cajita cuadrada donde va el icono de cada red */
+.redes i {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  background: var(--oliva);
+  color: var(--crema);
+}
+
+/* Franja final de otro color con el crédito en letra muy pequeña y cursiva */
+.pie-credito {
+  background: var(--oliva);
+  color: var(--crema);
+  font-size: 0.7rem;
+  font-style: italic;
+  padding-block: 0.7rem;
+}
+.pie-credito p {
+  margin: 0;
+  max-width: none;
+}
+.pie-credito a {
+  color: var(--amarillo-claro);
+}
+
+
+/* ==========================================================================
+   6. PORTADA (HERO) Y MARCO "BLOB" DE LAS FOTOS
+   ========================================================================== */
+.hero {
+  background: var(--verde-oscuro);
+  color: var(--crema);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  overflow: hidden;              /* la sombra del blob no se sale de la pantalla en celular */
+}
+
+.hero .contenedor {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hero h1 {
+  color: var(--blanco);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+/* --- El marco "blob" ---------------------------------------------------
+   El "blob" es una caja cuadrada con las esquinas redondeadas de forma
+   irregular. Los 8 porcentajes de "border-radius" controlan la forma:
+   cámbialos (entre 30% y 70%) para obtener otro blob. Detrás lleva una
+   sombra amarilla desplazada, que da el efecto de dos capas.
+   ----------------------------------------------------------------------- */
+.blob-marco {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+/* La capa amarilla de atrás */
+.blob-marco::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--amarillo);
+  border-radius: 62% 38% 46% 54% / 44% 61% 39% 56%;
+  transform: translate(26px, 22px) rotate(-8deg);
+}
+
+/* La foto (encima) */
+.blob {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--verde-claro);  /* se ve si la foto no carga */
+  border-radius: 43% 57% 62% 38% / 55% 41% 59% 45%;
+}
+.blob img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* la foto se recorta sin deformarse */
+}
+
+/* Variante más pequeña del blob (para las cajas de invitación) */
+.blob-marco.blob-pequeno {
+  width: min(100%, 300px);
+}
+.blob-marco.blob-pequeno::before {
+  background: var(--verde);
+}
+
+
+/* ==========================================================================
+   7. SECCIÓN "NUESTRA VISIÓN Y VALORES" + LINKS RÁPIDOS
+   ========================================================================== */
+.vision {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+.vision .contenedor {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.vision h2 {
+  color: var(--blanco);
+}
+
+.vision p {
+  font-size: 1.1rem;
+}
+
+.links-rapidos h3 {
+  color: var(--blanco);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.links-rapidos ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+/* Cada link rápido es una barra de color con una flecha en la punta */
+.link-rapido {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--verde-oscuro);
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+.link-rapido span {
+  padding: 1rem 1.3rem;
+  align-self: center;
+}
+.link-rapido i {
+  flex: none;
+  width: 52px;
+  display: grid;
+  place-items: center;
+  background: var(--verde-oscuro);
+  color: var(--crema);
+  font-size: 1.1rem;
+  font-style: normal;
+}
+.link-rapido:hover,
+.link-rapido:focus-visible {
+  filter: brightness(1.08);
+}
+
+/* Colores de cada barra */
+.link-amarillo { background: var(--amarillo); }
+.link-verde    { background: var(--verde); }
+.link-naranja  { background: var(--naranja); color: var(--crema); }
+
+
+/* ==========================================================================
+   8. CABECERA DE LAS PÁGINAS INTERNAS
+   --------------------------------------------------------------------------
+   Franja oscura con el título que aparece arriba de cada página interna
+   (Eventos, Grupos de estudio, Miembros, etc.)
+   ========================================================================== */
+.cabecera-pagina {
+  background: var(--verde-oscuro);
+  color: var(--crema);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+.cabecera-pagina h1 {
+  color: var(--blanco);
+  margin-bottom: 0.4rem;
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+}
+.cabecera-pagina p {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   9. TARJETAS DE EVENTOS
+   --------------------------------------------------------------------------
+   Cada evento es una tarjeta blanca con borde oscuro, la imagen circular
+   sobresaliendo por arriba y el botón sobresaliendo por la esquina inferior.
+   ========================================================================== */
+.titulo-con-boton {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+.titulo-con-boton h2 {
+  margin: 0;
+}
+
+.eventos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.evento {
+  position: relative;
+  background: var(--blanco);
+  border: 4px solid var(--verde-oscuro);
+  padding: 110px 1.6rem 0;
+  margin-top: 90px;             /* espacio para la imagen que sobresale */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen circular del evento */
+.evento-imagen {
+  position: absolute;
+  top: -94px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--verde-claro);
+  border: 4px solid var(--verde-oscuro);
+}
+.evento-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evento-fecha {
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--naranja);
+  margin-bottom: 0.4rem;
+}
+
+.evento h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 2.2rem;
+  letter-spacing: 0.02em;
+}
+
+.evento p {
+  flex: 1;                       /* empuja el botón hacia abajo */
+}
+
+/* El botón sale por la esquina inferior izquierda de la tarjeta */
+.evento .boton {
+  align-self: flex-start;
+  margin: 1rem 0 -14px calc(-1.6rem - 16px);
+}
+
+/* Caja grande de invitación ("¿Tienes la iniciativa de algún evento?") */
+.caja-invitacion {
+  overflow: hidden;
+  margin-top: 4rem;
+  background: var(--naranja);
+  color: var(--crema);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.caja-invitacion h2 {
+  color: var(--blanco);
+}
+.caja-invitacion p {
+  font-size: 1.1rem;
+}
+.caja-invitacion .blob-marco::before {
+  background: var(--amarillo);
+}
+
+/* --- Calendario ---------------------------------------------------------
+   Este bloque le da estilo al calendario, pero NO lo dibuja: eso lo hace
+   js/principal.js, leyendo la fecha (data-fecha) de cada evento. Un mes
+   se ve como una tarjeta ".mes-calendario"; el día de un evento queda
+   pintado de verde y se puede tocar para ir directo a ese evento. */
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin: 2rem 0 4rem;
+}
+.eventos + h2 {
+  margin-top: 4rem;
+}
+.mes-calendario h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+.grilla-calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.dia-semana {
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--verde-bosque);
+  padding-bottom: 0.5rem;
+}
+.dia-calendario {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  background: var(--crema);
+  border: 2px solid var(--blanco);
+  font-family: var(--fuente-sub);
+  font-size: 0.9rem;
+}
+.dia-calendario.con-evento {
+  background: var(--verde);
+  color: var(--verde-oscuro);
+  font-weight: 700;
+  cursor: pointer;
+}
+.dia-calendario.con-evento:hover,
+.dia-calendario.con-evento:focus-visible {
+  background: var(--verde-claro);
+}
+
+
+/* ==========================================================================
+   10. GRUPOS DE ESTUDIO
+   --------------------------------------------------------------------------
+   Cuatro tarjetas, cada una del color de su grupo. La parte de arriba
+   (foto y nombre) es de color; la parte de abajo es crema para que el
+   texto se lea bien.
+   ========================================================================== */
+.grupos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid var(--verde-oscuro);
+  background: var(--blanco);
+}
+
+/* Parte de color con el nombre y la foto */
+.grupo-cabeza {
+  padding: 1.2rem 1.2rem 0;
+}
+.grupo-cabeza h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 2.3rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.8rem;
+}
+.grupo-foto {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.35);
+  margin-inline: -1.2rem;
+}
+.grupo-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Parte crema con la descripción y el botón */
+.grupo-cuerpo {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.grupo-cuerpo p {
+  flex: 1;
+}
+
+/* Colores de cada grupo (cambia aquí si un grupo cambia de color) */
+.grupo-naranja  .grupo-cabeza { background: var(--naranja);  color: var(--crema); }
+.grupo-verde    .grupo-cabeza { background: var(--verde);    color: var(--verde-oscuro); }
+.grupo-amarillo .grupo-cabeza { background: var(--amarillo); color: var(--verde-oscuro); }
+.grupo-azul     .grupo-cabeza { background: var(--azul);     color: var(--crema); }
+
+/* Caja "¿Quieres ir un paso más adelante?" */
+.caja-semilleros {
+  margin-top: 4rem;
+  background: var(--verde-oscuro);
+  color: var(--crema);
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.caja-semilleros h2 {
+  margin: 0;
+  color: var(--verde-claro);
+  max-width: 30ch;
+}
+
+
+/* ==========================================================================
+   11. SEMILLEROS
+   ========================================================================== */
+.fondo-verde-bosque {
+  background: var(--verde-bosque);
+  color: var(--crema);
+}
+.fondo-verde-bosque h2 {
+  color: var(--blanco);
+}
+
+.semilleros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.semillero {
+  background: var(--crema);
+  color: var(--tinta);
+  padding: 1.8rem 1.6rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.semillero h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 2.3rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+}
+.semillero p {
+  flex: 1;
+  font-family: var(--fuente-sub);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--verde-bosque);
+}
+/* Botón sobresaliendo por la esquina inferior izquierda */
+.semillero .boton {
+  align-self: flex-start;
+  margin: 1.2rem 0 -12px calc(-1.6rem - 12px);
+}
+
+
+/* ==========================================================================
+   12. BIO-COLECCIONES (CARRUSEL DE CAMISETAS)
+   --------------------------------------------------------------------------
+   El carrusel funciona con "scroll-snap": las tarjetas están en una fila
+   que se desliza de a una. Las flechas y los puntos las controla el
+   archivo js/principal.js (no hay que tocarlo para agregar camisetas).
+   ========================================================================== */
+/* --- Introducción (texto + foto en blob sobre fondo oscuro) ----------- */
+.coleccion-intro {
+  position: relative;
+  overflow: hidden;              /* la sombra del blob no se sale de la sección en celular */
+  background: var(--verde-oscuro);
+  color: var(--crema);
+}
+.coleccion-intro h1 {
+  color: var(--blanco);
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  margin-bottom: 1.2rem;
+}
+.coleccion-intro h2 {
+  color: var(--blanco);
+}
+.coleccion-intro .contenedor {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.coleccion-intro .boton {
+  margin-top: 0.4rem;
+}
+
+.texto-destacado {
+  font-size: 1.2rem;
+  max-width: 70ch;
+}
+
+/* Ola decorativa que separa la introducción del catálogo, en vez de una
+   línea recta. Es un dibujo SVG: si quieres una ola más alta o más baja,
+   cambia el "height" de ".ola svg" más abajo. No hace falta tocar los
+   números de la "d" del path para que funcione en cualquier pantalla,
+   ya que el dibujo se estira solo para ocupar todo el ancho. */
+.ola {
+  line-height: 0;                /* quita un espacio raro que el navegador deja debajo del SVG */
+  margin-top: -1px;              /* evita una línea blanca de 1px entre la sección y la ola */
+}
+.ola svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+.ola path {
+  fill: var(--verde-oscuro);
+}
+
+.coleccion-titulo {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.coleccion-titulo p {
+  font-size: 1.15rem;
+  margin: 0 auto;
+}
+
+/* --- Carrusel genérico (se usa para camisetas y para Red Alumni) --- */
+.carrusel {
+  position: relative;
+  padding-inline: 4rem;          /* deja espacio a los lados para las flechas */
+}
+
+.carrusel-pista {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;         /* oculta la barra de scroll */
+  padding-bottom: 0.5rem;
+}
+.carrusel-pista::-webkit-scrollbar {
+  display: none;
+}
+
+.carrusel-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* Flechas del carrusel */
+.carrusel-flecha {
+  position: absolute;
+  top: 40%;
+  width: 52px;
+  height: 52px;
+  border: 0;
+  background: var(--verde-oscuro);
+  color: var(--crema);
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.carrusel-flecha:hover,
+.carrusel-flecha:focus-visible {
+  background: var(--verde);
+  color: var(--verde-oscuro);
+}
+.carrusel-anterior  { left: 0; }
+.carrusel-siguiente { right: 0; }
+
+/* Puntos de posición (los crea el JavaScript) */
+.carrusel-puntos {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+.carrusel-puntos button {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--verde-oscuro);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.carrusel-puntos button.activo {
+  background: var(--verde-oscuro);
+}
+
+/* Cada camiseta dentro del carrusel */
+.camiseta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.camiseta-imagen {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--blanco);
+  border: 4px solid var(--verde-oscuro);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+.camiseta-imagen img {
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Botón invisible que envuelve la foto para poder ampliarla (zoom).
+   Quita el aspecto de botón y deja la foto igual que antes. */
+.ampliar {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+/* Icono de lupa que aparece al pasar el mouse o al llegar con el teclado */
+.ampliar-icono {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  color: var(--crema);
+  background: rgba(30, 42, 18, 0);
+  opacity: 0;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+.ampliar:hover .ampliar-icono,
+.ampliar:focus-visible .ampliar-icono {
+  opacity: 1;
+  background: rgba(30, 42, 18, 0.35);
+}
+.camiseta h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 2.6rem;
+  letter-spacing: 0.02em;
+}
+.camiseta-etiqueta {
+  font-family: var(--fuente-sub);
+  font-weight: 500;
+  color: var(--verde-bosque);
+  margin: 1.5rem 0 0.5rem;
+}
+
+/* Tallas: cuadritos S, M, L... */
+.tallas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.8rem;
+}
+.tallas li {
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 46px;
+  text-align: center;
+  padding: 0.45rem 0.6rem;
+  border: 2px solid var(--verde-oscuro);
+}
+
+/* --- Ventana de zoom (foto ampliada) -----------------------------------
+   Se abre al hacer clic en cualquier foto con la clase "ampliar". La
+   controla js/principal.js; aquí solo está su aspecto. */
+.zoom-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 42, 18, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 5.5rem;          /* espacio a los lados para las flechas de la Bitácora */
+  z-index: 200;
+}
+.zoom-fondo.visible {
+  display: flex;
+}
+.zoom-fondo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: var(--crema);
+}
+.zoom-cerrar {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: var(--amarillo);
+  color: var(--verde-oscuro);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.zoom-cerrar:hover,
+.zoom-cerrar:focus-visible {
+  background: var(--amarillo-vivo);
+}
+
+
+/* ==========================================================================
+   13. MIEMBROS (ORGANIGRAMA, GALERÍAS, RED ALUMNI)
+   ========================================================================== */
+
+/* --- Organigrama ------------------------------------------------------
+   Tres niveles: Presidente -> Vicepresidente -> 5 coordinaciones.
+   Las líneas que los unen están hechas con bordes (::before / ::after).
+   ----------------------------------------------------------------------- */
+.organigrama {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.cargo {
+  font-family: var(--fuente-sub);
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.8rem 1.2rem;
+  border: 3px solid var(--verde-oscuro);
+  background: var(--blanco);
+  min-width: 180px;
+}
+.cargo-presidente     { background: var(--verde);    }
+.cargo-vicepresidente { background: var(--amarillo); }
+
+/* Línea vertical entre niveles */
+.organigrama-linea {
+  width: 3px;
+  height: 34px;
+  background: var(--verde-oscuro);
+}
+
+/* Fila de coordinaciones con la línea horizontal arriba */
+.coordinaciones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 34px 0 0;
+  position: relative;
+}
+.coordinaciones::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: var(--verde-oscuro);
+}
+.coordinaciones li {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.coordinaciones li::before {
+  content: '';
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  width: 3px;
+  height: 34px;
+  background: var(--verde-oscuro);
+}
+.coordinaciones .cargo {
+  min-width: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  padding-inline: 0.5rem;
+}
+
+/* --- Galerías por comité ---------------------------------------------- */
+.comite {
+  margin-top: 3.5rem;
+}
+.comite h2 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.4rem;
+}
+/* Cuadrito de color al lado del nombre de cada comité */
+.comite h2::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  background: var(--color-comite, var(--verde));
+  flex: none;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Cada persona: foto cuadrada del mismo tamaño y el nombre abajo */
+.persona {
+  text-align: center;
+}
+.persona-foto {
+  aspect-ratio: 1 / 1;            /* todas las fotos quedan cuadradas e iguales */
+  overflow: hidden;
+  background: var(--verde-claro);
+  border: 4px solid var(--color-comite, var(--verde));
+}
+.persona-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* recorta la foto para que no se deforme */
+}
+.persona h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0.7rem 0 0;
+}
+.persona a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--fuente-sub);
+  font-size: 0.9rem;
+  color: var(--azul-medio);
+  margin-top: 0.3rem;
+}
+
+/* Colores de cada comité (para el cuadrito y el borde de las fotos) */
+.comite-presidencia   { --color-comite: var(--verde); }
+.comite-comunicaciones{ --color-comite: var(--azul); }
+.comite-estudiantil   { --color-comite: var(--naranja); }
+.comite-logistica     { --color-comite: var(--amarillo); }
+.comite-relaciones    { --color-comite: var(--azul-suave); }
+.comite-gestion       { --color-comite: var(--dorado); }
+
+/* --- Red Alumni (carrusel) ------------------------------------------- */
+.alumni h2 {
+  color: var(--verde-bosque);
+}
+.alumni .carrusel-item {
+  flex: 0 0 calc((100% - 3rem) / 3);   /* se ven 3 personas a la vez */
+}
+.alumni .persona-foto {
+  border-color: var(--verde-oscuro);
+}
+
+
+/* ==========================================================================
+   14. INSCRIPCIONES
+   ========================================================================== */
+.inscripciones {
+  max-width: 720px;
+}
+.inscripciones p {
+  font-size: 1.15rem;
+}
+.aviso {
+  border-left: 8px solid var(--amarillo);
+  background: var(--amarillo-claro);
+  padding: 1.2rem 1.4rem;
+  margin: 2rem 0;
+}
+.aviso p {
+  margin: 0;
+  font-weight: bold;
+}
+
+
+/* ==========================================================================
+   15. POP-UP DEL PRÓXIMO EVENTO (solo en la página de inicio)
+   --------------------------------------------------------------------------
+   Aparece la primera vez que se abre la página en cada visita.
+   El contenido del pop-up está en index.html; aquí solo está su aspecto.
+   ========================================================================== */
+.popup-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 42, 18, 0.75);   /* verde oscuro transparente */
+  display: none;                          /* oculto; el JS lo muestra */
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;                       /* por si no cabe en pantallas pequeñas */
+  z-index: 100;
+}
+.popup-fondo.visible {
+  display: flex;
+}
+
+.popup {
+  position: relative;
+  width: min(100%, 420px);
+  margin: 150px auto 2rem;
+}
+.popup .evento {
+  margin-top: 0;
+  padding-bottom: 0;
+}
+.popup-titulo {
+  position: absolute;
+  top: -128px;
+  left: 0;
+  font-family: var(--fuente-titulo);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: var(--amarillo);
+}
+
+/* Botón X para cerrar */
+.popup-cerrar {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: var(--amarillo);
+  color: var(--verde-oscuro);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+}
+.popup-cerrar:hover,
+.popup-cerrar:focus-visible {
+  background: var(--amarillo-vivo);
+}
+
+
+/* ==========================================================================
+   16. BITÁCORA (GALERÍA GIRATORIA)
+   --------------------------------------------------------------------------
+   El carrusel gira solo: js/principal.js decide cuál foto es la "activa"
+   (le pone data-pos="0") y estas reglas se encargan de que las fotos
+   vecinas se vean más chicas y hacia atrás, como en una vitrina. No hace
+   falta tocar los números de aquí abajo para agregar o quitar fotos.
+   ========================================================================== */
+.bitacora-intro {
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.carrusel-3d {
+  position: relative;
+  height: 460px;
+  max-width: 480px;
+  margin: 0 auto;
+  perspective: 1600px;
+}
+.carrusel-3d-pista {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.bitacora-foto {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  border: 4px solid var(--verde-oscuro);
+  background: var(--verde-claro);        /* se ve si la foto no carga */
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.bitacora-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Posición de cada foto respecto a la que está activa (la calcula el JS) */
+.bitacora-foto[data-pos="0"] {
+  transform: translateY(0) scale(1) rotateX(0deg);
+  opacity: 1;
+  z-index: 5;
+}
+.bitacora-foto[data-pos="-1"] {
+  transform: translateY(-155px) scale(0.74) rotateX(30deg);
+  opacity: 0.55;
+  z-index: 4;
+}
+.bitacora-foto[data-pos="1"] {
+  transform: translateY(155px) scale(0.74) rotateX(-30deg);
+  opacity: 0.55;
+  z-index: 4;
+}
+.bitacora-foto[data-pos="-2"] {
+  transform: translateY(-210px) scale(0.55) rotateX(38deg);
+  opacity: 0;
+  z-index: 3;
+}
+.bitacora-foto[data-pos="2"] {
+  transform: translateY(210px) scale(0.55) rotateX(-38deg);
+  opacity: 0;
+  z-index: 3;
+}
+.bitacora-foto[data-pos="oculto"] {
+  transform: translateY(0) scale(0.3);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Ventana con la foto en grande + su descripción -------------------
+   Reutiliza el fondo oscuro ".zoom-fondo" que ya existe para Bio-Colecciones;
+   esto solo define las dos columnas de adentro (foto y texto). */
+.bitacora-vista-contenido {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: stretch;
+  max-width: 900px;
+  max-height: 85vh;
+  background: var(--crema);
+  color: var(--tinta);
+}
+.bitacora-vista-contenido img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bitacora-vista-texto {
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bitacora-vista-texto h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 2.1rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.7rem;
+}
+.bitacora-vista-texto p {
+  font-size: 1.05rem;
+  max-width: none;
+  margin: 0;
+}
+/* Línea chica de abajo: "Foto 2 de 6 · toca la foto..." */
+.bitacora-vista-texto .vista-contador {
+  margin-top: 1.4rem;
+  font-family: var(--fuente-sub);
+  font-size: 0.85rem;
+  color: var(--verde-bosque);
+}
+/* La foto grande también pasa a la siguiente al tocarla */
+.bitacora-vista-contenido img {
+  cursor: pointer;
+}
+
+/* Flechas para pasar de foto sin cerrar la ventana */
+.vista-flecha {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border: 0;
+  background: var(--amarillo);
+  color: var(--verde-oscuro);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+}
+.vista-anterior  { left: 1.2rem; }
+.vista-siguiente { right: 1.2rem; }
+.vista-flecha:hover,
+.vista-flecha:focus-visible {
+  background: var(--amarillo-vivo);
+}
+
+
+/* ==========================================================================
+   17. AJUSTES PARA CELULAR Y TABLET (RESPONSIVE)
+   --------------------------------------------------------------------------
+   Todo lo que está aquí adentro solo se aplica en pantallas pequeñas.
+   ========================================================================== */
+
+/* Pantallas medianas (laptops chicas): el menú se aprieta un poco para
+   que las 7 pestañas quepan en una sola fila */
+@media (max-width: 1200px) {
+  .menu a, .desplegable > button { font-size: 0.98rem; padding: 0.6rem 0.55rem; }
+  .menu .boton-menu { padding: 0.65rem 0.9rem; margin-left: 0.3rem; font-size: 0.88rem; }
+  .logo img { max-width: 160px; }
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  /* Menú: con 7 pestañas, desde este ancho ya no caben en una fila, así
+     que aparece la hamburguesa y los links se apilan (igual que en celular) */
+  .hamburguesa { display: block; }
+  .navegacion {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--crema);
+    border-bottom: 3px solid var(--verde-oscuro);
+    padding: 0.5rem 1.25rem 1.25rem;
+  }
+  .navegacion.abierto { display: block; }
+  .menu { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; }
+  .menu a, .desplegable > button { padding: 0.8rem 0; width: 100%; text-align: left; }
+  .submenu {
+    position: static;
+    display: block;               /* en celular el submenú siempre se ve */
+    border: 0;
+    border-left: 3px solid var(--verde);
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0;
+  }
+  .submenu a { padding: 0.5rem 1rem; }
+  .menu .boton-menu { margin: 0.8rem 0 0; text-align: center; }
+}
+
+@media (max-width: 960px) {
+  .eventos   { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .grupos    { grid-template-columns: repeat(2, 1fr); }
+  .semilleros{ grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+  .galeria   { grid-template-columns: repeat(3, 1fr); }
+  .alumni .carrusel-item { flex-basis: calc((100% - 1.5rem) / 2); }
+  .coordinaciones { flex-wrap: wrap; }
+  .coordinaciones li { flex: 1 1 30%; }
+  .coordinaciones::before,
+  .coordinaciones li::before { display: none; }   /* sin líneas cuando se acomodan en 2 filas */
+  .coordinaciones { padding-top: 0; }
+}
+
+/* Celulares */
+@media (max-width: 720px) {
+  .hero .contenedor,
+  .vision .contenedor,
+  .caja-invitacion,
+  .coleccion-intro .contenedor,
+  .camiseta { grid-template-columns: 1fr; }
+  .hero .blob-marco,
+  .coleccion-intro .blob-marco { order: -1; width: min(100%, 320px); }
+  .ola svg { height: 36px; }
+
+  .grupos  { grid-template-columns: 1fr; }
+  .galeria { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .alumni .carrusel-item { flex-basis: 100%; }
+  /* Carruseles: las flechas pasan abajo, debajo de los puntos */
+  .carrusel { padding-inline: 0; padding-bottom: 64px; }
+  .carrusel-flecha { top: auto; bottom: 0; }
+  .carrusel-anterior  { left: calc(50% - 60px); }
+  .carrusel-siguiente { right: calc(50% - 60px); }
+
+  /* Bitácora: carrusel y fotos más chicos para que quepan en la pantalla */
+  .carrusel-3d { height: 340px; max-width: 300px; }
+  .bitacora-foto { width: 210px; height: 210px; }
+  .bitacora-foto[data-pos="-1"] { transform: translateY(-112px) scale(0.74) rotateX(30deg); }
+  .bitacora-foto[data-pos="1"]  { transform: translateY(112px)  scale(0.74) rotateX(-30deg); }
+  .bitacora-foto[data-pos="-2"] { transform: translateY(-155px) scale(0.55) rotateX(38deg); }
+  .bitacora-foto[data-pos="2"]  { transform: translateY(155px)  scale(0.55) rotateX(-38deg); }
+  .zoom-fondo { padding: 1rem 1rem 5rem; }
+  .bitacora-vista-contenido {
+    grid-template-columns: 1fr;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+  .bitacora-vista-contenido img { max-height: 40vh; }
+  .vista-flecha { top: auto; bottom: 1rem; transform: none; }
+  .vista-anterior  { left: calc(50% - 60px); }
+  .vista-siguiente { right: calc(50% - 60px); }
+}

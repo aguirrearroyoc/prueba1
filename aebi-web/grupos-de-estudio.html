@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Grupos de estudio · AEBI</title>
+  <meta name="description" content="Grupos de estudio de AEBI: mastozoología, botánica, herpetología y ornitología.">
+  <!-- Icono de la pestaña (usa el logo) -->
+  <link rel="icon" href="Imagenes/LOGOAEBI.png">
+
+  <!-- Tipografías del manual de marca (Bebas Neue y Oswald, desde Google Fonts).
+       Arial no necesita descargarse: ya está en todos los computadores. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Iconos (LinkedIn, Instagram, correo, WhatsApp, flechas) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Hoja de estilos de la página (colores, tamaños, etc.) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     ENCABEZADO Y MENÚ
+     Este bloque se repite igual en todas las páginas. Si agregas una
+     pestaña nueva, agrégala en TODAS las páginas para que el menú sea
+     igual en todas. La página actual lleva class="activo".
+     ===================================================================== -->
+<header class="encabezado">
+  <div class="contenedor">
+    <!-- Logo: el archivo está en Imagenes/LOGOAEBI.png -->
+    <a class="logo" href="index.html">
+      <img src="Imagenes/LOGOAEBI.png" alt="AEBI - Asociación Estudiantil de Biología de Icesi">
+    </a>
+
+    <!-- Botón de menú que solo se ve en celular -->
+    <button class="hamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav class="navegacion" aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <!-- Pestaña con submenú -->
+        <li class="desplegable">
+          <button type="button" aria-expanded="false">Proyectos</button>
+          <ul class="submenu">
+            <li><a href="grupos-de-estudio.html" class="activo">Grupos de estudio</a></li>
+            <li><a href="semilleros.html">Semilleros</a></li>
+          </ul>
+        </li>
+        <li><a href="bio-colecciones.html">Bio-Colecciones</a></li>
+        <li><a href="miembros.html">Miembros</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
+        <li><a href="inscripciones.html" class="boton boton-menu">Únete a nosotros</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <h1>Grupos de estudio</h1>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    <h2>¿Te interesa aprender sobre algún campo de la biología?</h2>
+    <p class="texto-destacado">Cada semana nos reunimos para hablar de temas nuevos. No necesitas ser experto en el tema: ven a aprender, comparte lo que investigues, haz preguntas y conecta. Los grupos de estudio actuales son:</p>
+
+    <!-- =================================================================
+         TARJETAS DE GRUPOS
+         Colores disponibles: grupo-naranja, grupo-verde, grupo-amarillo,
+         grupo-azul (definidos en css/estilos.css, bloque 10).
+         Para agregar un grupo, copia un bloque <article> completo.
+         Las fotos van en la carpeta Imagenes con el nombre que aparece en
+         cada src="...". Si aún no hay foto, la tarjeta se ve igual de bien
+         (queda solo el color).
+         ================================================================= -->
+    <div class="grupos">
+      <article class="grupo grupo-naranja">
+        <div class="grupo-cabeza">
+          <h3>Mastozoología</h3>
+          <!-- Foto del grupo: cambia la ruta por la foto que quieras -->
+          <div class="grupo-foto">
+            <img src="Imagenes/MASTOZOOLOGIA.jpg" alt="Mastozoología">
+          </div>
+        </div>
+        <div class="grupo-cuerpo">
+          <p><strong>Estudio de los mamíferos</strong>, analizando su biología, comportamiento y conservación.</p>
+          <!-- Link al grupo de WhatsApp -->
+          <a class="boton boton-oscuro" href="https://chat.whatsapp.com/B6rxFZysdZ78WFazfY4I19" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Únete</a>
+        </div>
+      </article>
+
+      <article class="grupo grupo-verde">
+        <div class="grupo-cabeza">
+          <h3>Botánica</h3>
+          <!-- Foto del grupo: cambia la ruta por la foto que quieras -->
+          <div class="grupo-foto">
+            <img src="Imagenes/BOTANICA.jpg" alt="Botánica">
+          </div>
+        </div>
+        <div class="grupo-cuerpo">
+          <p><strong>Estudio de las plantas</strong>, hongos y algas, analizando su fisiología y diversidad.</p>
+          <!-- Link al grupo de WhatsApp -->
+          <a class="boton boton-oscuro" href="https://chat.whatsapp.com/B6rxFZysdZ78WFazfY4I19" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Únete</a>
+        </div>
+      </article>
+
+      <article class="grupo grupo-amarillo">
+        <div class="grupo-cabeza">
+          <h3>Herpetología</h3>
+          <!-- Foto del grupo: cambia la ruta por la foto que quieras -->
+          <div class="grupo-foto">
+            <img src="Imagenes/HERPETOLOGIA.jpg" alt="Herpetología">
+          </div>
+        </div>
+        <div class="grupo-cuerpo">
+          <p><strong>Estudio de los reptiles y anfibios</strong>, investigando su ecología y evolución.</p>
+          <!-- Link al grupo de WhatsApp -->
+          <a class="boton boton-oscuro" href="https://chat.whatsapp.com/B6rxFZysdZ78WFazfY4I19" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Únete</a>
+        </div>
+      </article>
+
+      <article class="grupo grupo-azul">
+        <div class="grupo-cabeza">
+          <h3>Ornitología</h3>
+          <!-- Foto del grupo: cambia la ruta por la foto que quieras -->
+          <div class="grupo-foto">
+            <img src="Imagenes/ORNITOLOGIA.jpg" alt="Ornitología">
+          </div>
+        </div>
+        <div class="grupo-cuerpo">
+          <p><strong>Estudio de las aves</strong>, incluyendo su comportamiento, cantos y migraciones.</p>
+          <!-- Link al grupo de WhatsApp -->
+          <a class="boton boton-oscuro" href="https://chat.whatsapp.com/B6rxFZysdZ78WFazfY4I19" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Únete</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Invitación a los semilleros -->
+    <div class="caja-semilleros">
+      <h2>¿Quieres ir un paso más adelante? Únete a un semillero de investigación.</h2>
+      <a class="boton" href="semilleros.html">Semilleros actuales</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =====================================================================
+     PIE DE PÁGINA: ¡Contáctanos!
+     Se repite igual en todas las páginas. Para cambiar un link o el
+     correo, cámbialo aquí y en las demás páginas.
+     ===================================================================== -->
+<footer class="pie">
+  <div class="contenedor pie-contacto">
+    <h2>¡Contáctanos!</h2>
+    <ul class="redes">
+      <li>
+        <a href="https://www.linkedin.com/company/aebi-asociacion-estudiantil-de-biologia-de-icesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aebicesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram
+        </a>
+      </li>
+      <li>
+        <a href="mailto:aebicesi@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>aebicesi@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Franja de crédito (letra pequeña y cursiva) -->
+  <div class="pie-credito">
+    <div class="contenedor">
+      <p>Esta página es una iniciativa impulsada para conectar biólogos con los medios interactivos y tecnologías de comunicación. Designed by Catalina Aguirre, <a href="mailto:cataaguirrearroyo@gmail.com">feedback</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- El JavaScript va de último para que la página cargue primero -->
+<script src="js/principal.js"></script>
+</body>
+</html>

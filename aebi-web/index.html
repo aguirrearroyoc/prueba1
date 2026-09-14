@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>AEBI · Asociación Estudiantil de Biología de Icesi</title>
+  <meta name="description" content="La comunidad de biólogos para biólogos en la Universidad Icesi. Eventos, grupos de estudio, semilleros y Bio-Colecciones.">
+  <!-- Icono de la pestaña (usa el logo) -->
+  <link rel="icon" href="Imagenes/LOGOAEBI.png">
+
+  <!-- Tipografías del manual de marca (Bebas Neue y Oswald, desde Google Fonts).
+       Arial no necesita descargarse: ya está en todos los computadores. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Iconos (LinkedIn, Instagram, correo, WhatsApp, flechas) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Hoja de estilos de la página (colores, tamaños, etc.) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     ENCABEZADO Y MENÚ
+     Este bloque se repite igual en todas las páginas. Si agregas una
+     pestaña nueva, agrégala en TODAS las páginas para que el menú sea
+     igual en todas. La página actual lleva class="activo".
+     ===================================================================== -->
+<header class="encabezado">
+  <div class="contenedor">
+    <!-- Logo: el archivo está en Imagenes/LOGOAEBI.png -->
+    <a class="logo" href="index.html">
+      <img src="Imagenes/LOGOAEBI.png" alt="AEBI - Asociación Estudiantil de Biología de Icesi">
+    </a>
+
+    <!-- Botón de menú que solo se ve en celular -->
+    <button class="hamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav class="navegacion" aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html" class="activo">Inicio</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <!-- Pestaña con submenú -->
+        <li class="desplegable">
+          <button type="button" aria-expanded="false">Proyectos</button>
+          <ul class="submenu">
+            <li><a href="grupos-de-estudio.html">Grupos de estudio</a></li>
+            <li><a href="semilleros.html">Semilleros</a></li>
+          </ul>
+        </li>
+        <li><a href="bio-colecciones.html">Bio-Colecciones</a></li>
+        <li><a href="miembros.html">Miembros</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
+        <li><a href="inscripciones.html" class="boton boton-menu">Únete a nosotros</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- =====================================================================
+     PORTADA (HERO)
+     Fondo verde oscuro, frase principal, texto de apoyo, botón y la foto
+     con marco "blob". Para cambiar la foto: reemplaza Imagenes/PRINCIPAL.jpg
+     por otra con el mismo nombre, o cambia la ruta de abajo.
+     ===================================================================== -->
+<section class="hero">
+  <div class="contenedor">
+    <div>
+      <h1>La comunidad de biólogos para biólogos en Icesi</h1>
+      <p>Nos encargamos de velar por el bienestar de los estudiantes de biología y del crecimiento académico y profesional de nuestros miembros.</p>
+      <a class="boton" href="inscripciones.html">Únete a nosotros</a>
+    </div>
+
+    <!-- Foto con marco blob (la forma se ajusta en css/estilos.css, bloque 6) -->
+    <div class="blob-marco">
+      <div class="blob">
+        <img src="Imagenes/PRINCIPAL.jpeg" alt="Miembros de AEBI">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     NUESTRA VISIÓN Y VALORES + LINKS RÁPIDOS
+     ===================================================================== -->
+<section class="vision seccion">
+  <div class="contenedor">
+    <div>
+      <h2>Nuestra visión y valores</h2>
+      <p>AEBI es la asociación estudiantil de biología de la Universidad Icesi. Buscamos ser una asociación líder de proyectos de alto impacto, que impulse el desarrollo de soluciones sostenibles. Ayudamos a formar biólogos profesionales, hábiles y honrados mediante talleres, charlas, salidas empresariales, celebraciones, ferias, eventos e integraciones.</p>
+    </div>
+
+    <!-- Links rápidos: cada uno es una barra de color.
+         Colores disponibles: link-amarillo, link-verde, link-naranja -->
+    <aside class="links-rapidos">
+      <h3>Links rápidos</h3>
+      <ul>
+        <li>
+          <a class="link-rapido link-amarillo" href="eventos.html">
+            <span>Programación de eventos</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a class="link-rapido link-verde" href="grupos-de-estudio.html">
+            <span>Oportunidades de aprendizaje</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a class="link-rapido link-naranja" href="bio-colecciones.html">
+            <span>¿Quieres apoyar biólogos y artistas? ¿Eres un artista que busca plataforma?</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- =====================================================================
+     POP-UP DEL PRÓXIMO EVENTO
+     Sale la primera vez que alguien abre la página de inicio.
+     Para cambiar el evento del pop-up: copia aquí la tarjeta del evento
+     que quieras desde eventos.html (imagen, fecha, título, texto y link).
+     Para quitar el pop-up: borra todo este bloque.
+     ===================================================================== -->
+<div id="popup-evento" class="popup-fondo" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
+  <div class="popup">
+    <p class="popup-titulo" id="popup-titulo">Próximo evento</p>
+    <button class="popup-cerrar" type="button" aria-label="Cerrar">&times;</button>
+    <article class="evento">
+      <div class="evento-imagen">
+        <img src="Imagenes/BIOLOGO.jpeg" alt="Día del Biólogo">
+      </div>
+      <p class="evento-fecha">17 de septiembre de 2026 | 12:00 a 2:00 p. m.</p>
+      <h3>Día del Biólogo</h3>
+      <p>Se conmemora la promulgación de la <strong>Ley 22 de 1984</strong>, la cual reglamentó oficialmente el ejercicio de la profesión de biología en el país. Nos encanta comer pastel.</p>
+      <a class="boton" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Día del Biólogo - AEBI&dates=20260917T120000/20260917T140000&ctz=America/Bogota&details=Se conmemora la promulgación de la Ley 22 de 1984, la cual reglamentó oficialmente el ejercicio de la profesión de biología en el país. Nos encanta comer pastel.&location=Universidad Icesi, Cali" target="_blank" rel="noopener">Agéndate</a>
+    </article>
+  </div>
+</div>
+
+</main>
+
+<!-- =====================================================================
+     PIE DE PÁGINA: ¡Contáctanos!
+     Se repite igual en todas las páginas. Para cambiar un link o el
+     correo, cámbialo aquí y en las demás páginas.
+     ===================================================================== -->
+<footer class="pie">
+  <div class="contenedor pie-contacto">
+    <h2>¡Contáctanos!</h2>
+    <ul class="redes">
+      <li>
+        <a href="https://www.linkedin.com/company/aebi-asociacion-estudiantil-de-biologia-de-icesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aebicesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram
+        </a>
+      </li>
+      <li>
+        <a href="mailto:aebicesi@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>aebicesi@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Franja de crédito (letra pequeña y cursiva) -->
+  <div class="pie-credito">
+    <div class="contenedor">
+      <p>Esta página es una iniciativa impulsada para conectar biólogos con los medios interactivos y tecnologías de comunicación. Designed by Catalina Aguirre, <a href="mailto:cataaguirrearroyo@gmail.com">feedback</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- El JavaScript va de último para que la página cargue primero -->
+<script src="js/principal.js"></script>
+</body>
+</html>

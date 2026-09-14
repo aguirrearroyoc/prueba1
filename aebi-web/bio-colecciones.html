@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Bio-Colecciones · AEBI</title>
+  <meta name="description" content="Bio-Colecciones: ilustración científica en camisetas. Apoya a artistas y las salidas de campo de Biología.">
+  <!-- Icono de la pestaña (usa el logo) -->
+  <link rel="icon" href="Imagenes/LOGOAEBI.png">
+
+  <!-- Tipografías del manual de marca (Bebas Neue y Oswald, desde Google Fonts).
+       Arial no necesita descargarse: ya está en todos los computadores. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Iconos (LinkedIn, Instagram, correo, WhatsApp, flechas) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Hoja de estilos de la página (colores, tamaños, etc.) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     ENCABEZADO Y MENÚ
+     Este bloque se repite igual en todas las páginas. Si agregas una
+     pestaña nueva, agrégala en TODAS las páginas para que el menú sea
+     igual en todas. La página actual lleva class="activo".
+     ===================================================================== -->
+<header class="encabezado">
+  <div class="contenedor">
+    <!-- Logo: el archivo está en Imagenes/LOGOAEBI.png -->
+    <a class="logo" href="index.html">
+      <img src="Imagenes/LOGOAEBI.png" alt="AEBI - Asociación Estudiantil de Biología de Icesi">
+    </a>
+
+    <!-- Botón de menú que solo se ve en celular -->
+    <button class="hamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav class="navegacion" aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <!-- Pestaña con submenú -->
+        <li class="desplegable">
+          <button type="button" aria-expanded="false">Proyectos</button>
+          <ul class="submenu">
+            <li><a href="grupos-de-estudio.html">Grupos de estudio</a></li>
+            <li><a href="semilleros.html">Semilleros</a></li>
+          </ul>
+        </li>
+        <li><a href="bio-colecciones.html" class="activo">Bio-Colecciones</a></li>
+        <li><a href="miembros.html">Miembros</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
+        <li><a href="inscripciones.html" class="boton boton-menu">Únete a nosotros</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- =====================================================================
+     INTRODUCCIÓN: título, texto y botón a un lado, foto en blob al otro,
+     sobre fondo oscuro (como la portada de inicio). Para cambiar la foto:
+     reemplaza Imagenes/BIOCOLECCIONES.jpg por otra con el mismo nombre,
+     o cambia la ruta de abajo.
+     ===================================================================== -->
+<section class="seccion coleccion-intro">
+  <div class="contenedor">
+    <div>
+      <h1>Bio-Colecciones</h1>
+      <p class="texto-destacado">Bio-Colecciones es una iniciativa para artistas y estudiantes interesados en ilustración científica con un fin noble: un porcentaje de las ganancias se le da a los diseñadores (25% por prenda vendida) y el 75% se destina a las salidas de campo de Biología. La idea es que sea de puertas abiertas y motivar a los artistas a compartir (¡y lucrarse!) con sus diseños.</p>
+      <p>¿Tienes un diseño?</p>
+      <a class="boton" href="mailto:aebicesi@gmail.com">Escríbenos</a>
+    </div>
+
+    <!-- Foto con marco blob (la forma se ajusta en css/estilos.css, bloque 12) -->
+    <div class="blob-marco">
+      <div class="blob">
+        <img src="Imagenes/ranita.png" alt="Ilustraciones de Bio-Colecciones">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ola decorativa: separa la introducción del catálogo en vez de una línea
+     recta. Va FUERA de la sección oscura a propósito, para que quede
+     pegada justo en el borde con la sección blanca de abajo. -->
+<div class="ola" aria-hidden="true">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path d="M0,5 A90,90 0 0,0 180,5 A90,90 0 0,0 360,5 A90,90 0 0,0 540,5 A90,90 0 0,0 720,5 A90,90 0 0,0 900,5 A90,90 0 0,0 1080,5 A90,90 0 0,0 1260,5 A90,90 0 0,0 1440,5 L1440,100 L0,100 Z"></path>
+  </svg>
+</div>
+
+<!-- =====================================================================
+     COLECCIÓN ft. CORAZÓN x COLOMBIA
+     Carrusel de camisetas. Cada camiseta es un bloque
+     <div class="carrusel-item"> ... </div>.
+     - Para agregar una camiseta: copia un bloque completo y cambia la
+       imagen (Imagenes/Camiseta7.png, etc.), el nombre y las tallas.
+     - Para quitar una talla, borra su <li>...</li>.
+     - Los puntos de abajo del carrusel se crean solos.
+     - Las fotos se pueden ampliar con solo hacer clic: no hay que
+       configurar nada más al agregar una camiseta nueva.
+     ===================================================================== -->
+<section class="seccion" style="background: var(--blanco);">
+  <div class="contenedor">
+    <div class="coleccion-titulo">
+      <h2>Colección ft. Corazón x Colombia</h2>
+      <p>Esta colección está inspirada en especies de Colombia, con ilustraciones, nombres científicos, datos curiosos y mucha vida.</p>
+    </div>
+
+    <div class="carrusel">
+      <button class="carrusel-flecha carrusel-anterior" type="button" aria-label="Camiseta anterior">&#8249;</button>
+      <div class="carrusel-pista">
+        <div class="carrusel-item">
+          <div class="camiseta">
+            <div class="camiseta-imagen">
+              <!-- El botón envuelve la foto para poder ampliarla (zoom) al hacer clic -->
+              <button type="button" class="ampliar" aria-label="Ampliar imagen de Oso de Anteojos">
+                <img src="Imagenes/Camiseta1.png" alt="Camiseta Oso de Anteojos">
+                <span class="ampliar-icono"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </button>
+            </div>
+            <div>
+              <h3>Oso de Anteojos</h3>
+              <p class="camiseta-etiqueta">Tallas disponibles</p>
+              <ul class="tallas">
+                <li>S</li><li>M</li><li>L</li><li>XL</li><li>XXL</li><li>XXXL</li>
+              </ul>
+              <!-- PENDIENTE: pega el link del formulario de pedidos en href="..." -->
+              <a class="boton boton-naranja" href="#" target="_blank" rel="noopener">Realiza tu pedido</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carrusel-item">
+          <div class="camiseta">
+            <div class="camiseta-imagen">
+              <!-- El botón envuelve la foto para poder ampliarla (zoom) al hacer clic -->
+              <button type="button" class="ampliar" aria-label="Ampliar imagen de Ballena Jorobada">
+                <img src="Imagenes/Camiseta2.png" alt="Camiseta Ballena Jorobada">
+                <span class="ampliar-icono"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </button>
+            </div>
+            <div>
+              <h3>Ballena Jorobada</h3>
+              <p class="camiseta-etiqueta">Tallas disponibles</p>
+              <ul class="tallas">
+                <li>S</li><li>M</li><li>L</li><li>XL</li><li>XXL</li><li>XXXL</li>
+              </ul>
+              <!-- PENDIENTE: pega el link del formulario de pedidos en href="..." -->
+              <a class="boton boton-naranja" href="#" target="_blank" rel="noopener">Realiza tu pedido</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carrusel-item">
+          <div class="camiseta">
+            <div class="camiseta-imagen">
+              <!-- El botón envuelve la foto para poder ampliarla (zoom) al hacer clic -->
+              <button type="button" class="ampliar" aria-label="Ampliar imagen de Rana Dardo Dorada">
+                <img src="Imagenes/Camiseta3.png" alt="Camiseta Rana Dardo Dorada">
+                <span class="ampliar-icono"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </button>
+            </div>
+            <div>
+              <h3>Rana Dardo Dorada</h3>
+              <p class="camiseta-etiqueta">Tallas disponibles</p>
+              <ul class="tallas">
+                <li>S</li><li>M</li><li>L</li><li>XL</li><li>XXL</li><li>XXXL</li>
+              </ul>
+              <!-- PENDIENTE: pega el link del formulario de pedidos en href="..." -->
+              <a class="boton boton-naranja" href="#" target="_blank" rel="noopener">Realiza tu pedido</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carrusel-item">
+          <div class="camiseta">
+            <div class="camiseta-imagen">
+              <!-- El botón envuelve la foto para poder ampliarla (zoom) al hacer clic -->
+              <button type="button" class="ampliar" aria-label="Ampliar imagen de Tortuga Carey">
+                <img src="Imagenes/Camiseta4.png" alt="Camiseta Tortuga Carey">
+                <span class="ampliar-icono"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </button>
+            </div>
+            <div>
+              <h3>Tortuga Carey</h3>
+              <p class="camiseta-etiqueta">Tallas disponibles</p>
+              <ul class="tallas">
+                <li>S</li><li>M</li><li>L</li><li>XL</li><li>XXL</li><li>XXXL</li>
+              </ul>
+              <!-- PENDIENTE: pega el link del formulario de pedidos en href="..." -->
+              <a class="boton boton-naranja" href="#" target="_blank" rel="noopener">Realiza tu pedido</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carrusel-item">
+          <div class="camiseta">
+            <div class="camiseta-imagen">
+              <!-- El botón envuelve la foto para poder ampliarla (zoom) al hacer clic -->
+              <button type="button" class="ampliar" aria-label="Ampliar imagen de Orquídeas de Colombia">
+                <img src="Imagenes/Camiseta5.png" alt="Camiseta Orquídeas de Colombia">
+                <span class="ampliar-icono"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </button>
+            </div>
+            <div>
+              <h3>Orquídeas de Colombia</h3>
+              <p class="camiseta-etiqueta">Tallas disponibles</p>
+              <ul class="tallas">
+                <li>S</li><li>M</li><li>L</li><li>XL</li><li>XXL</li><li>XXXL</li>
+              </ul>
+              <!-- PENDIENTE: pega el link del formulario de pedidos en href="..." -->
+              <a class="boton boton-naranja" href="#" target="_blank" rel="noopener">Realiza tu pedido</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carrusel-item">
+          <div class="camiseta">
+            <div class="camiseta-imagen">
+              <!-- El botón envuelve la foto para poder ampliarla (zoom) al hacer clic -->
+              <button type="button" class="ampliar" aria-label="Ampliar imagen de Orquídeas de Colombia">
+                <img src="Imagenes/Camiseta6.png" alt="Camiseta Orquídeas de Colombia">
+                <span class="ampliar-icono"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></span>
+              </button>
+            </div>
+            <div>
+              <h3>Orquídeas de Colombia</h3>
+              <p class="camiseta-etiqueta">Tallas disponibles</p>
+              <ul class="tallas">
+                <li>S</li><li>M</li><li>L</li><li>XL</li><li>XXL</li><li>XXXL</li>
+              </ul>
+              <!-- PENDIENTE: pega el link del formulario de pedidos en href="..." -->
+              <a class="boton boton-naranja" href="#" target="_blank" rel="noopener">Realiza tu pedido</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carrusel-flecha carrusel-siguiente" type="button" aria-label="Siguiente camiseta">&#8250;</button>
+      <div class="carrusel-puntos"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Ventana para ver una camiseta en grande. Funciona sola: no hay que
+     tocar nada de esto al agregar o quitar camisetas. -->
+<div id="zoom-imagen" class="zoom-fondo" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="zoom-cerrar" type="button" aria-label="Cerrar">&times;</button>
+  <img src="" alt="">
+</div>
+
+</main>
+
+<!-- =====================================================================
+     PIE DE PÁGINA: ¡Contáctanos!
+     Se repite igual en todas las páginas. Para cambiar un link o el
+     correo, cámbialo aquí y en las demás páginas.
+     ===================================================================== -->
+<footer class="pie">
+  <div class="contenedor pie-contacto">
+    <h2>¡Contáctanos!</h2>
+    <ul class="redes">
+      <li>
+        <a href="https://www.linkedin.com/company/aebi-asociacion-estudiantil-de-biologia-de-icesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aebicesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram
+        </a>
+      </li>
+      <li>
+        <a href="mailto:aebicesi@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>aebicesi@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Franja de crédito (letra pequeña y cursiva) -->
+  <div class="pie-credito">
+    <div class="contenedor">
+      <p>Esta página es una iniciativa impulsada para conectar biólogos con los medios interactivos y tecnologías de comunicación. Designed by Catalina Aguirre, <a href="mailto:cataaguirrearroyo@gmail.com">feedback</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- El JavaScript va de último para que la página cargue primero -->
+<script src="js/principal.js"></script>
+</body>
+</html>

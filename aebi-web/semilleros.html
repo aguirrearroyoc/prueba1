@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Semilleros · AEBI</title>
+  <meta name="description" content="Semilleros de investigación de la Universidad Icesi: ConCiencia, BioBIMA y Semillero IBQ.">
+  <!-- Icono de la pestaña (usa el logo) -->
+  <link rel="icon" href="Imagenes/LOGOAEBI.png">
+
+  <!-- Tipografías del manual de marca (Bebas Neue y Oswald, desde Google Fonts).
+       Arial no necesita descargarse: ya está en todos los computadores. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Iconos (LinkedIn, Instagram, correo, WhatsApp, flechas) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Hoja de estilos de la página (colores, tamaños, etc.) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     ENCABEZADO Y MENÚ
+     Este bloque se repite igual en todas las páginas. Si agregas una
+     pestaña nueva, agrégala en TODAS las páginas para que el menú sea
+     igual en todas. La página actual lleva class="activo".
+     ===================================================================== -->
+<header class="encabezado">
+  <div class="contenedor">
+    <!-- Logo: el archivo está en Imagenes/LOGOAEBI.png -->
+    <a class="logo" href="index.html">
+      <img src="Imagenes/LOGOAEBI.png" alt="AEBI - Asociación Estudiantil de Biología de Icesi">
+    </a>
+
+    <!-- Botón de menú que solo se ve en celular -->
+    <button class="hamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav class="navegacion" aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <!-- Pestaña con submenú -->
+        <li class="desplegable">
+          <button type="button" aria-expanded="false">Proyectos</button>
+          <ul class="submenu">
+            <li><a href="grupos-de-estudio.html">Grupos de estudio</a></li>
+            <li><a href="semilleros.html" class="activo">Semilleros</a></li>
+          </ul>
+        </li>
+        <li><a href="bio-colecciones.html">Bio-Colecciones</a></li>
+        <li><a href="miembros.html">Miembros</a></li>
+        <li><a href="bitacora.html">Bitácora</a></li>
+        <li><a href="inscripciones.html" class="boton boton-menu">Únete a nosotros</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <h1>Semilleros</h1>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SEMILLEROS
+     Cada semillero es un bloque <article class="semillero">.
+     El botón "Contacto" puede llevar a Instagram, a un correo (mailto:...)
+     o a cualquier link. Colores de botón: boton-verde (por defecto, sin
+     sufijo: class="boton"), boton-naranja, boton-amarillo, boton-azul.
+     ===================================================================== -->
+<section class="seccion fondo-verde-bosque">
+  <div class="contenedor">
+    <h2>Conecta con los semilleros de la universidad</h2>
+
+    <div class="semilleros">
+      <article class="semillero">
+        <h3>ConCiencia</h3>
+        <p>Divulgación científica y educación</p>
+        <a class="boton boton-amarillo" href="https://www.instagram.com/semillero_conciencia?stkn=bnp5aTRmZTQwaW52" target="_blank" rel="noopener">Contacto</a>
+      </article>
+
+      <article class="semillero">
+        <h3>BioBIMA</h3>
+        <p>Biotecnología y Biología Molecular Aplicada</p>
+        <a class="boton boton-verde" href="https://www.instagram.com/biobima_?stkn=MTB1aHBlenZveWQyZg==" target="_blank" rel="noopener">Contacto</a>
+      </article>
+
+      <article class="semillero">
+        <h3>Semillero IBQ</h3>
+        <p>Participación en proyectos de Ingeniería Bioquímica</p>
+        <a class="boton boton-naranja" href="mailto:ijprada@icesi.edu.co">Contacto</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =====================================================================
+     PIE DE PÁGINA: ¡Contáctanos!
+     Se repite igual en todas las páginas. Para cambiar un link o el
+     correo, cámbialo aquí y en las demás páginas.
+     ===================================================================== -->
+<footer class="pie">
+  <div class="contenedor pie-contacto">
+    <h2>¡Contáctanos!</h2>
+    <ul class="redes">
+      <li>
+        <a href="https://www.linkedin.com/company/aebi-asociacion-estudiantil-de-biologia-de-icesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aebicesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram
+        </a>
+      </li>
+      <li>
+        <a href="mailto:aebicesi@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>aebicesi@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Franja de crédito (letra pequeña y cursiva) -->
+  <div class="pie-credito">
+    <div class="contenedor">
+      <p>Esta página es una iniciativa impulsada para conectar biólogos con los medios interactivos y tecnologías de comunicación. Designed by Catalina Aguirre, <a href="mailto:cataaguirrearroyo@gmail.com">feedback</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- El JavaScript va de último para que la página cargue primero -->
+<script src="js/principal.js"></script>
+</body>
+</html>

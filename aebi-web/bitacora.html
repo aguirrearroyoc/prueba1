@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Bitácora · AEBI</title>
+  <meta name="description" content="Bitácora de AEBI: un día en la vida de un biólogo, en fotos.">
+  <!-- Icono de la pestaña (usa el logo) -->
+  <link rel="icon" href="Imagenes/LOGOAEBI.png">
+
+  <!-- Tipografías del manual de marca (Bebas Neue y Oswald, desde Google Fonts).
+       Arial no necesita descargarse: ya está en todos los computadores. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Iconos (LinkedIn, Instagram, correo, WhatsApp, flechas) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Hoja de estilos de la página (colores, tamaños, etc.) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     ENCABEZADO Y MENÚ
+     Este bloque se repite igual en todas las páginas. Si agregas una
+     pestaña nueva, agrégala en TODAS las páginas para que el menú sea
+     igual en todas. La página actual lleva class="activo".
+     ===================================================================== -->
+<header class="encabezado">
+  <div class="contenedor">
+    <!-- Logo: el archivo está en Imagenes/LOGOAEBI.png -->
+    <a class="logo" href="index.html">
+      <img src="Imagenes/LOGOAEBI.png" alt="AEBI - Asociación Estudiantil de Biología de Icesi">
+    </a>
+
+    <!-- Botón de menú que solo se ve en celular -->
+    <button class="hamburguesa" type="button" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav class="navegacion" aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <!-- Pestaña con submenú -->
+        <li class="desplegable">
+          <button type="button" aria-expanded="false">Proyectos</button>
+          <ul class="submenu">
+            <li><a href="grupos-de-estudio.html">Grupos de estudio</a></li>
+            <li><a href="semilleros.html">Semilleros</a></li>
+          </ul>
+        </li>
+        <li><a href="bio-colecciones.html">Bio-Colecciones</a></li>
+        <li><a href="miembros.html">Miembros</a></li>
+        <li><a href="bitacora.html" class="activo">Bitácora</a></li>
+        <li><a href="inscripciones.html" class="boton boton-menu">Únete a nosotros</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <h1>Bitácora</h1>
+  </div>
+</section>
+
+<!-- =====================================================================
+     GALERÍA GIRATORIA
+     Cada foto es un botón <button class="bitacora-foto">. Van girando
+     solas (las mueve js/principal.js) y al tocar cualquiera se abre en
+     grande con su descripción.
+     - Para agregar una foto: copia un bloque foto_bitacora(...) de abajo,
+       cambia el archivo (guárdalo en Imagenes/bitacora/), el texto
+       alternativo, el título y la descripción que se ven en la ventana.
+     - Para quitar una foto: borra su bloque.
+     - El orden en que gira es el mismo orden en que están aquí.
+     ===================================================================== -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="bitacora-intro">
+      <p class="texto-destacado">Toca la imagen que te interese para descubrir un día en la vida de un biólogo.</p>
+    </div>
+
+    <div class="carrusel-3d">
+      <div class="carrusel-3d-pista">
+        <button type="button" class="bitacora-foto" data-titulo="Integración deportiva 2026-1" data-texto="Jugamos fútbol en una integración entre estudiantes y colaboradores" aria-label="Ver: Integración deportiva 2026-1">
+          <img src="Imagenes/bitacora/fuvol.jpeg" alt="Deportiva">
+        </button>
+
+        <button type="button" class="bitacora-foto" data-titulo="Salida al Zoológico de Cali 2026-1" data-texto="Visitamos el Zoológico de Santiago de Cali, el mejor del país" aria-label="Ver: Salida al Zoológico de Cali 2026-1">
+          <img src="Imagenes/bitacora/zoo.jpeg" alt="En el zoo">
+        </button>
+
+        <button type="button" class="bitacora-foto" data-titulo="Visitas técnicas en el Ministerio de Ambiente 2025-2" data-texto="Con palas en mano, colaboramos en la huerta del MIAMBIENTE." aria-label="Ver: Visita técnica en el Ministerio de Ambiente 2025-2">
+          <img src="Imagenes/bitacora/bogota.jpeg" alt="Visita técnica en el Ministerio de Ambiente 2025-2">
+        </button>
+
+        <button type="button" class="bitacora-foto" data-titulo="Celebración del día del profesor 2026-1" data-texto="Celebramos la vocación de nuestros profesores, con premios y dulces" aria-label="Ver: Celebración del día del profesor 2026-1">
+          <img src="Imagenes/bitacora/profesor.jpeg" alt="Celebración del día del profesor 2026-1">
+        </button>
+
+        <button type="button" class="bitacora-foto" data-titulo="Visita técnica en el Instituto Humboldt, Bogotá" data-texto="Conocimos las instalaciones de los laboratorios y hablamos de los planes de conservación que se llevan a cabo liderados por investigadores." aria-label="Ver: Visita técnica en el Instituto Humboldt, Bogotá">
+          <img src="Imagenes/bitacora/bogota2.jpeg" alt="Visita técnica en el Instituto Humboldt, Bogotá">
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ventana con la foto en grande + su descripción. Funciona sola: no hay
+     que tocar nada de esto al agregar o quitar fotos de arriba. Con las
+     flechas (o tocando la foto) se pasa a la siguiente sin cerrar. -->
+<div id="bitacora-vista" class="zoom-fondo" role="dialog" aria-modal="true" aria-label="Foto ampliada con descripción">
+  <button class="zoom-cerrar" type="button" aria-label="Cerrar">&times;</button>
+  <button class="vista-flecha vista-anterior" type="button" aria-label="Foto anterior">&#8249;</button>
+  <div class="bitacora-vista-contenido">
+    <img src="" alt="" title="Toca para ver la siguiente foto">
+    <div class="bitacora-vista-texto">
+      <h3></h3>
+      <p class="vista-descripcion"></p>
+      <p class="vista-contador"></p>
+    </div>
+  </div>
+  <button class="vista-flecha vista-siguiente" type="button" aria-label="Siguiente foto">&#8250;</button>
+</div>
+
+</main>
+
+<!-- =====================================================================
+     PIE DE PÁGINA: ¡Contáctanos!
+     Se repite igual en todas las páginas. Para cambiar un link o el
+     correo, cámbialo aquí y en las demás páginas.
+     ===================================================================== -->
+<footer class="pie">
+  <div class="contenedor pie-contacto">
+    <h2>¡Contáctanos!</h2>
+    <ul class="redes">
+      <li>
+        <a href="https://www.linkedin.com/company/aebi-asociacion-estudiantil-de-biologia-de-icesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aebicesi/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram
+        </a>
+      </li>
+      <li>
+        <a href="mailto:aebicesi@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>aebicesi@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Franja de crédito (letra pequeña y cursiva) -->
+  <div class="pie-credito">
+    <div class="contenedor">
+      <p>Esta página es una iniciativa impulsada para conectar biólogos con los medios interactivos y tecnologías de comunicación. Designed by Catalina Aguirre, <a href="mailto:cataaguirrearroyo@gmail.com">feedback</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- El JavaScript va de último para que la página cargue primero -->
+<script src="js/principal.js"></script>
+</body>
+</html>
